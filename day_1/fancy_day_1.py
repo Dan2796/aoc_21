@@ -1,6 +1,6 @@
 # fancier solution to day 1 that is at least a bit extensible
 
-file = open("input_1a.txt", "r")
+file = open("input_1.txt", "r")
 num_list_as_string = file.read().splitlines()
 while("" in num_list_as_string ) :
     num_list_as_string.remove("")

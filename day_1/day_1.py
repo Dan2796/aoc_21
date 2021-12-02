@@ -1,6 +1,6 @@
 # solution to day 1
 
-file = open("input_1a.txt", "r")
+file = open("input_1.txt", "r")
 lines = file.readlines()
 
 increasing_counter = 0
