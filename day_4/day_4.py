@@ -64,5 +64,46 @@ while bingo_answer == "not yet found":
 
 print("Solution to part 1:", bingo_answer)
 
+# narrow down to the winning card first 
+bingo_round = 1
+while len(cards) > 1:
+    bingo_called = bingo_numbers[0:bingo_round]
 
+    for card in cards:
+        if check_row_bingo(card, bingo_called) == "yes!":
+            cards.remove(card)
+        elif check_row_bingo(transpose_matrix(card), bingo_called) == "yes!":
+            cards.remove(card)
+    
+    bingo_round = bingo_round + 1
+
+# run the same old loop on the winner to find the score
+bingo_round = 1
+while len(cards) > 1:
+    bingo_called = bingo_numbers[0:bingo_round]
+
+    for card in cards:
+        if check_row_bingo(card, bingo_called) == "yes!":
+            cards.remove(card)
+        elif check_row_bingo(transpose_matrix(card), bingo_called) == "yes!":
+            cards.remove(card)
+    
+    bingo_round = bingo_round + 1
+
+# run the same old loop on the winner to find the score
+bingo_answer = "not yet found"
+while bingo_answer == "not yet found":
+    
+    bingo_called = bingo_numbers[0:bingo_round]
+
+    for card in cards:
+        if check_row_bingo(card, bingo_called) == "yes!":
+             bingo_answer = unmarked_score(card, bingo_called) * \
+                 bingo_called[-1]
+        elif check_row_bingo(transpose_matrix(card), bingo_called) == "yes!":
+             bingo_answer = unmarked_score(card, bingo_called) * \
+                 bingo_called[-1]
+    bingo_round = bingo_round + 1
+
+print("Solution to part 2:", bingo_answer)
 
