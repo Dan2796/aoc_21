@@ -1,7 +1,5 @@
 # Solution for day 7
 
-# Pretty poorly written for part 2, but it does work...
-
 #with open("example_input_7.txt", "r") as file:
 with open("input_7.txt", "r") as file:
     lines = file.read().splitlines()
