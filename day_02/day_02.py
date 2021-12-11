@@ -1,6 +1,6 @@
 # solution to day 2
 
-file = open("input_2.txt", "r")
+file = open("input_02.txt", "r")
 lines = file.read().splitlines()
 instructions = list(map(lambda x: x.split(), lines))
 

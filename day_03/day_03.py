@@ -1,6 +1,6 @@
 # Solution for day 3
 
-file = open("input_3.txt", "r")
+file = open("input_03.txt", "r")
 lines = file.read().splitlines()
 
 gamma_list = list()

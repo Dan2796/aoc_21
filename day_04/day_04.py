@@ -1,6 +1,6 @@
 # Solution for day 4
 
-file = open("input_4.txt", "r")
+file = open("input_04.txt", "r")
 lines = file.read().splitlines()
 
 # parse out the numbers from the first row 

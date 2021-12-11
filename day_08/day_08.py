@@ -1,7 +1,7 @@
-# Solution for day 7
+# Solution for day 8
 
-#with open("example_input_7.txt", "r") as file:
-with open("input_7.txt", "r") as file:
+#with open("example_input_08.txt", "r") as file:
+with open("input_08.txt", "r") as file:
     lines = file.read().splitlines()
 
 second_segments = []

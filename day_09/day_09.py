@@ -1,7 +1,7 @@
 # solution for day 9
 
-#with open("example_input_9.txt", "r") as file:
-with open("input_9.txt", "r") as file:
+#with open("example_input_09.txt", "r") as file:
+with open("input_09.txt", "r") as file:
     lines = file.read().splitlines()
 
 cave_map = []

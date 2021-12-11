@@ -3,8 +3,8 @@
 # parse first as csv to avoid /n at end 
 # then put into list of numbers as integers - as with day 6
 import csv
-with open('input_7.txt', mode ='r')as file:
-#with open('example_input.txt', mode ='r') as file:
+with open('input_07.txt', mode ='r')as file:
+#with open('example_input_07.txt', mode ='r') as file:
     csv_file = csv.reader(file)
 
     numbers = []

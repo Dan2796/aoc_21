@@ -1,7 +1,7 @@
 # Solution for day 5
 
-file = open("input_5.txt", "r")
-#file = open("example_input.txt", "r")
+file = open("input_05.txt", "r")
+#file = open("example_input_05.txt", "r")
 lines = file.read().splitlines()
 
 # Don't know how to use arrays, so will just have as four item lists
