@@ -14,48 +14,38 @@ for line in lines:
 import copy
 input_map_2 = copy.deepcopy(input_map)
 
-# note it's inclusive; the inputted row and col are included in the outputted
-# list of surrounding coordinates
+# note find around function is inclusive; the inputted row and col are 
+# included in the outputted list of surrounding coordinates
 def find_around(oct_map, row, col):
-    # wasn't recognising inputs as integers for some reasons
-    row = int(row)
+    row = int(row) # wasn't recognising inputs as integers for some reasons
     col = int(col)
     around = []
-  
     for i in range((row - 1), (row + 2)):
         for j in range(col - 1, (col + 2)):
             around.append([i, j])
-    
-    # get rid of the ones 
-    valid_around = []
+    valid_around = [] # get rid of the ones outside the matrix
     for point in around:
         if point[0] >= 0 and point[1] >= 0:
             if point[0] < len(oct_map) and point[1] < len(oct_map[0]): 
                 valid_around.append(point)
-    
     return(valid_around)
 
 def burst(oct_map, row, col):
     row = int(row)
     col = int(col)
-    
-    # -9999 used for burst because it will never be added up to over zero by
-    # mistake, and easier to use integer than string when doing the other 
-    # additions and stuff
     for octopus in find_around(oct_map, row, col):
         if oct_map[octopus[0]][octopus[1]] != -9999:
             oct_map[octopus[0]][octopus[1]] += 1
-    
-    # mark has having burst
+    # -9999 used for burst because it will never be added up to over zero by
+    # mistake, and easier to use integer than string when doing the other 
+    # additions and stuff
     oct_map[row][col] = -9999
-    
     return(oct_map)
 
 def add_one(oct_map):
     for row in range(0,len(oct_map)):
         for col in range(0, len(oct_map[0])):
             oct_map[row][col] += 1
-    
     return oct_map
 
 def burst_step(oct_map):
@@ -67,7 +57,7 @@ def burst_step(oct_map):
                 if oct_map[row][col] >= 0: # check not burst already this step
                     if oct_map[row][col] > 9: 
                         burst(oct_map,row,col)
-        # check if bursted
+        # check if all that need bursting have been bursted
         left_to_burst = 0
         for row in range(0,len(oct_map)):
             for col in range(0, len(oct_map[0])):
@@ -75,7 +65,6 @@ def burst_step(oct_map):
                     left_to_burst += 1
         if left_to_burst == 0:
             all_bursted = True
-
     return oct_map
 
 def return_bursted_to_zero(oct_map):
@@ -85,9 +74,7 @@ def return_bursted_to_zero(oct_map):
             if oct_map[row][col] <= 0: 
                 oct_map[row][col] = 0
                 burst_this_round += 1
-
     return [oct_map, burst_this_round]
-    return oct_map
 
 bursted_counter = 0
 for step in range(0,100):
@@ -107,15 +94,12 @@ def new_return_bursted_to_zero(oct_map):
             if oct_map[row][col] <= 0: 
                 oct_map[row][col] = 0
                 burst_this_round += 1
-    
     if burst_this_round == n_octopuses:
         return "it's finally happened!"
     else:
         return oct_map
 
 step = 1
-
-print(input_map_2)
 while True:
   input_map_2 = add_one(input_map_2)
   input_map_2 = burst_step(input_map_2)
