@@ -1,5 +1,5 @@
 # solution for day 15
-# with help from Elliot!
+# with help from Elliot on part 1!
 
 #with open("example_input_15.txt", "r") as file:
 with open("input_15.txt", "r") as file:
@@ -74,6 +74,45 @@ risk, path =  astar((0,0), (cave_width - 1, cave_height - 1), manhattan_distance
 #    for col in range(0, cave_width):
 #        line += str(path[(row,col)]) if (row,col) in path else " "
 #    print(line)
-print(risk)
+print("answer to part 1:", risk)
 
+
+# brute forcing an input change to get out the five by five grid
+def cycle_add(number, to_add):
+    new_number = number + to_add 
+    over = new_number - 9
+    if over > 0:
+        new_number = over
+    return new_number
+
+def add_to_row(row, to_add):
+    return "".join([str(cycle_add(int(i), to_add)) for i in row])
+
+def row_times_five(row):
+    return row + add_to_row(row, 1) + \
+               add_to_row(row, 2) + \
+               add_to_row(row, 3) + \
+               add_to_row(row, 4) 
+
+new_input = []
+
+for j in range(0,5):
+    for row in raw_input:
+        new_input.append(add_to_row(row, j))
+
+part_2_input = []
+for row in new_input:
+    part_2_input.append(row_times_five(row))
+
+# redraw cave with coordinates
+cave_width = len(part_2_input[0])
+cave_height = len(part_2_input)
+
+cave = {}
+for row in range(0, cave_height):
+  for col in range(0, cave_width):
+      cave[(row, col)] = int(part_2_input[row][col])
+
+risk, path =  astar((0,0), (cave_width - 1, cave_height - 1), manhattan_distance)
+print("answer to part 2:", risk)
 
