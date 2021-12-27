@@ -1,7 +1,7 @@
 # Solution for day 8
 
-#with open("example_input_08.txt", "r") as file:
-with open("input_08.txt", "r") as file:
+with open("example_input_08.txt", "r") as file:
+#with open("input_08.txt", "r") as file:
     lines = file.read().splitlines()
 
 second_segments = []
@@ -9,7 +9,7 @@ for line in lines:
     second_half = line.split("| ")[1].split(" ")
     for code in second_half:
         second_segments.append(code)
-
+print(second_segments)
 unique_num_counter = 0
 unique_len_values = [2, 4, 3, 7]
 for code in second_segments:
